@@ -41,11 +41,28 @@ public class DBConnector {
 
     public ResultSet getAllData() throws SQLException {
         String query = "select * from Automobiles";
-        System.out.println(query);
+        // System.out.println(query);
         data = runQuery(query);
+        // how to get a list of automobiles from result set
         return data;
     }
-    
-   
+
+//    public ResultSet searchByBrand(String brand) throws SQLException {
+//     String query = "select * from Automobiles where brand = " + brand;
+//     System.out.println("running query now");
+//     return runQuery(query);
+//    }
+//
+//    public ResultSet searchByType(String type) throws SQLException {
+//        String query = "select * from Automobiles where type = " + type;
+//        System.out.println("running query now");
+//        return runQuery(query);
+//    }
+    // red , color --> select * FROM Automobiles where color = red
+    public ResultSet findVehicleDetailsBySearchTermInColumn(String searchTerm, String nameOfColumn) throws SQLException {
+        String query = "select * from Automobiles where nameOfColumn" + nameOfColumn + " like " + searchTerm;
+        System.out.println("running query now");
+        return runQuery(query);
+    }
 }
 
